@@ -2,7 +2,7 @@
 
 use CupOfTea\Package;
 
-class Enumerators
+class Enumerator
 {
     use Package;
     
