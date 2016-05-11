@@ -1,0 +1,15 @@
+{
+    "name": "cupoftea/enumerators",
+    "description": "Enumerators for your PHP Classes",
+    "require": {
+        "cupoftea/package": "^1.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CupOfTea696",
+            "email": "cupoftea696@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
