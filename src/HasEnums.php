@@ -1,7 +1,6 @@
 <?php namespace CupOfTea\Enums;
 
 use ReflectionClass;
-use BadMethodCallException;
 
 trait HasEnums
 {

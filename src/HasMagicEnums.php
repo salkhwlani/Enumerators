@@ -1,5 +1,7 @@
 <?php namespace CupOfTea\Enums;
 
+use BadMethodCallException;
+
 trait HasMagicEnums{
     use HasEnums;
     
