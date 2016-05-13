@@ -13,6 +13,9 @@
         "php": ">=5.6.0",
         "cupoftea/package": "^1.2"
     },
+    "require-dev": {
+        "phpspec/phpspec": "^2.5"
+    },
     "autoload": {
         "psr-4": {
             "CupOfTea\\Enums\\": "src/"

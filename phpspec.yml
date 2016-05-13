@@ -1,0 +1,8 @@
+suites:
+    enums_suite:
+        namespace: CupOfTea\Enums
+        psr4_prefix: CupOfTea\Enums
+        spec_prefix: spec
+        src_path: %paths.config%/src
+        spec_path: %paths.config%
+formatter.name: pretty
