@@ -64,27 +64,35 @@ trait HasEnums
      */
     public function isEnum($key, $group = null)
     {
-        $key = $this->_toEnumKey($key, $group);
+        $enumKey = $this->_toEnumKey($key, $group);
+        
+        if (! static::isValidEnumKey($enumKey)) {
+            throw new InvalidArgumentException("The key {$key} is not a valid Enumerator key" . ($group ? " for group {$group}." : '.'));
+        }
+        
+        $getProp = function($group) {
+            return lcfirst(str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', strtolower($group)))));
+        };
         
         if (! $group) {
-            $parts = explode('_', $key);
+            $parts = explode('_', $enumKey);
             
             do {
                 array_pop($parts);
                 
                 $group = $this->_toEnumKey(implode('_', $parts));
-                $prop = lcfirst(str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', strtolower($group)))));
+                $prop = $getProp($group);
             } while (! property_exists($this, $prop) && count($parts));
         } else {
             $group = $this->_toEnumKey($group);
-            $prop = lcfirst(str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', strtolower($group)))));
+            $prop = $getProp($group);
         }
         
         if (! property_exists($this, $prop)) {
             return false;
         }
         
-        return $this->$prop == static::enums($group)[$key];
+        return $this->$prop == static::enums($group)[$enumKey];
     }
     
     /**
