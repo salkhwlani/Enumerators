@@ -1,6 +1,7 @@
 <?php namespace CupOfTea\Enums;
 
 use ReflectionClass;
+use InvalidArgumentException;
 
 trait HasEnums
 {
@@ -34,6 +35,10 @@ trait HasEnums
      */
     public static function isValidEnumValue($value, $group = null)
     {
+        if ($value < 1) {
+            throw new InvalidArgumentException('An enumerator value must be greater than or equal to 1.');
+        }
+        
         $constants = static::enums($group);
         
         return in_array($value, $constants);
@@ -47,8 +52,6 @@ trait HasEnums
      */
     public static function isValidEnumKey($key)
     {
-        $key = static::_toEnumKey($key);
-        
         return array_key_exists($key, static::enums());
     }
     
