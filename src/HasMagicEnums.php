@@ -15,7 +15,9 @@ trait HasMagicEnums
     protected static function canCallEnum($method)
     {
         if (preg_match('/^is([A-Z][A-z]*[A-Z][A-z]*)/', $method, $matches)) {
-            return static::isValidEnumKey($matches[1]);
+            $key = static::_toEnumKey($matches[1]);
+            
+            return static::isValidEnumKey($key);
         }
         
         return false;
