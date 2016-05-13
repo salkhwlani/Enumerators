@@ -70,7 +70,7 @@ trait HasEnums
             throw new InvalidArgumentException("The key {$key} is not a valid Enumerator key" . ($group ? " for group {$group}." : '.'));
         }
         
-        $getProp = function($group) {
+        $getProp = function ($group) {
             return lcfirst(str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', strtolower($group)))));
         };
         
